@@ -1,8 +1,11 @@
 package boj;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class boj2961 {
+
     static int n,ans;
     static int[] a,b;
     public static void main(String[] args) {
@@ -17,6 +20,7 @@ public class boj2961 {
         }
         go(0,0,1,0);
         System.out.println(ans);
+
     }
 
     private static void go(int idx, int cnt, int left, int right) {
