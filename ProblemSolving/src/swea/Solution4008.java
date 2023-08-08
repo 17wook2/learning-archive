@@ -3,6 +3,7 @@ package swea;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.NotSerializableException;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
@@ -26,7 +27,6 @@ public class Solution4008 {
             go(0,arr[0]);
             System.out.println("#"+tc+" "+(right - left));
         }
-
 
     }
     private static void go(int cnt, int sum){
