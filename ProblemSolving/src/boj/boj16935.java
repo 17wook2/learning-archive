@@ -42,29 +42,29 @@ public class boj16935 {
         int col = arr[0].length;
         if (command == 1) {
             int[][] new_array = new int[row][col];
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < m; j++) new_array[i][j] = arr[n-1-i][j];
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j < col; j++) new_array[i][j] = arr[row-1-i][j];
             }
             arr = new_array;
         }
         if (command == 2) {
             int[][] new_array = new int[row][col];
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < m; j++) new_array[i][j] = arr[i][m-1-j];
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j < col; j++) new_array[i][j] = arr[i][col-1-j];
             }
             arr = new_array;
         }
         if (command == 3) {
             int[][] new_array = new int[col][row];
-            for (int i = 0; i < m; i++) {
-                for (int j = 0; j < n; j++) new_array[i][j] = arr[n-1-j][i];
+            for (int i = 0; i < col; i++) {
+                for (int j = 0; j < row; j++) new_array[i][j] = arr[row-1-j][i];
             }
             arr = new_array;
         }
         if (command == 4) {
             int[][] new_array = new int[col][row];
-            for (int i = 0; i < m; i++) {
-                for (int j = 0; j < n; j++) new_array[i][j] = arr[j][m-1-i];
+            for (int i = 0; i < col; i++) {
+                for (int j = 0; j < row; j++) new_array[i][j] = arr[j][col-1-i];
             }
             arr = new_array;
         }
