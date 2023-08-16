@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 
 public class boj15684 {
     private static int[][] arr;
-    private static int n,m,h,ans;
+    private static int n,m,h;
 
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -15,7 +15,6 @@ public class boj15684 {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
         h = Integer.parseInt(st.nextToken());
-        ans = 4;
         arr = new int[h][n];
         for(int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
@@ -24,12 +23,13 @@ public class boj15684 {
             arr[a-1][b-1] = 1;
         }
         check();
-        go(0,0);
-        if(ans == 4){
-            System.out.println(-1);
-        }else{
-            System.out.println(ans);
+        for(int size = 0; size <= 3; size++){
+            if(go(0,0,size)){
+                System.out.println(size);
+                return;
+            }
         }
+        System.out.println(-1);
 
     }
     private static boolean check(){
@@ -44,20 +44,20 @@ public class boj15684 {
         return true;
     }
 
-    private static void go(int idx, int cnt) {
-        if (cnt >= ans) return;
-        if(check()) {
-            ans = cnt;
-            return;
+    private static boolean go(int idx, int cnt, int size) {
+        if (cnt == size){
+            if(check()) return true;
+            return false;
         }
         for(int i = idx; i < h; i++){
-            for(int j = 0; j < n; j++){
+            for(int j = 0; j < n-1; j++){
                 if (arr[i][j] == 1) continue;
                 if(j-1 >= 0 && arr[i][j-1] == 1) continue;
                 arr[i][j] = 1;
-                go(i,cnt+1);
+                if(go(i,cnt+1,size)) return true;
                 arr[i][j] = 0;
             }
         }
+        return false;
     }
 }
