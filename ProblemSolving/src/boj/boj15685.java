@@ -3,7 +3,7 @@ package boj;
 import java.util.*;
 
 public class boj15685 {
-    static int n;
+    static int n, ans;
     static boolean[][] visited;
     static int[] dx = {0,-1,0,1};
     static int[] dy = {1,0,-1,0};
@@ -11,21 +11,18 @@ public class boj15685 {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
         visited = new boolean[101][101];
+        ans = 0;
         for(int i = 0; i < n; i++){
             int x = sc.nextInt(); int y = sc.nextInt(); int d = sc.nextInt(); int g = sc.nextInt();
             int temp = x; x = y; y = temp;
             go(x,y,d,g);
-            for (int q = 0; q < 10; q++) {
-                for (int j = 0; j < 10; j++) {
-                    System.out.print(visited[q][j] + " ");
-                }
-                System.out.println();
-            }
-//            for(boolean[] row: visited) System.out.println(Arrays.toString(row));
-//            System.out.println();
-
         }
-
+        for(int i = 0; i < 100; i++){
+            for(int j = 0; j < 100; j++){
+                if(visited[i][j] && visited[i][j+1] && visited[i+1][j] && visited[i+1][j+1]) ans += 1;
+            }
+        }
+        System.out.println(ans);
     }
 
     private static void go(int x, int y, int d, int g) {
