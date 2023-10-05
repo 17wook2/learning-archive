@@ -9,7 +9,7 @@ public class boj4485 {
     private static int[] dx = {-1, 0, 1, 0};
     private static int[] dy = {0, 1, 0, -1};
 
-    static class Node implements Comparable<Node>{
+    static class Node {
         int x,y,w;
 
         public Node(int x, int y, int w) {
@@ -18,10 +18,10 @@ public class boj4485 {
             this.w = w;
         }
 
-        @Override
-        public int compareTo(Node o) {
-            return this.w - o.w;
-        }
+//        @Override
+//        public int compareTo(Node o) {
+//            return this.w - o.w;
+//        }
     }
 
     public static void main(String[] args) throws Exception{
@@ -55,7 +55,7 @@ public class boj4485 {
 
     static int dijkstra(){
         dist[0][0] = arr[0][0];
-        PriorityQueue<Node> pq = new PriorityQueue<>();
+        PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingInt(o -> o.w));
         pq.add(new Node(0,0,arr[0][0]));
 
         while (!pq.isEmpty()) {
